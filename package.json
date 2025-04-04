@@ -1,11 +1,14 @@
 {
-  "name": "modernize-next-free",
+  "name": "logixfleetfrontend-demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://morde2002.github.io/logixdemo-frontend",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
+    "deploy": "npm run export && gh-pages -d out",
     "lint": "next lint"
   },
   "dependencies": {
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
-    "@types/lodash": "4.14.196"
+    "@types/lodash": "4.14.196",
+    "gh-pages": "^6.3.0"
   }
 }
