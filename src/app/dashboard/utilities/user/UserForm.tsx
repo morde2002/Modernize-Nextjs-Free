@@ -1,12 +1,14 @@
-"use client";
-
 import React, { useState } from "react";
 import { TextField, Button, Box, MenuItem, Select, InputLabel, FormControl, Grid, Typography, Alert } from "@mui/material";
 import { useRouter } from 'next/navigation';
 import { LoadingButton } from '@mui/lab';
 import Cookies from 'js-cookie';
 
-const UserForm = () => {
+interface UserFormProps {
+  onSuccess?: () => void; // Optional onSuccess prop
+}
+
+const UserForm: React.FC<UserFormProps> = ({ onSuccess }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -52,6 +54,8 @@ const UserForm = () => {
 
       const result = await response.json();
       setSuccess(result.message);
+      // Execute onSuccess if provided
+      if (onSuccess) onSuccess();
       // Redirect to a success page or user listing page
       router.push('/dashboard/users');
     } catch (error) {
